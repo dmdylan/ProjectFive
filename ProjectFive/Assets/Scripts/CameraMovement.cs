@@ -6,6 +6,7 @@ public class CameraMovement : MonoBehaviour
 {
 
     public GameObject objectToFollow;
+    public float zOffset = 1;
     public float yOffset = 15;
     public float speed = 2.0f;
 
@@ -18,7 +19,7 @@ public class CameraMovement : MonoBehaviour
         //position.y = Mathf.Lerp(this.transform.position.y, objectToFollow.transform.position.y, interpolation);
         position.x = Mathf.Lerp(this.transform.position.x, objectToFollow.transform.position.x, interpolation);
         position.y = yOffset;
-        position.z = Mathf.Lerp(this.transform.position.z, objectToFollow.transform.position.z, interpolation);
+        position.z = Mathf.Lerp(this.transform.position.z, objectToFollow.transform.position.z + zOffset, interpolation);
 
         this.transform.position = position;
     }
