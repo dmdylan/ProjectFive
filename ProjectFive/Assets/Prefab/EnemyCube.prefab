@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 6
-  player: {fileID: 0}
+  player: {fileID: 4544275442519895606, guid: b723db5fc5c0f494ab7a7debdd20d389, type: 3}
 --- !u!54 &975730027
 Rigidbody:
   m_ObjectHideFlags: 0

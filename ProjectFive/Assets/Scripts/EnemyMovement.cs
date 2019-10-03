@@ -16,6 +16,6 @@ public class EnemyMovement : MonoBehaviour
     private void Movement()
     {
         float step = enemySpeed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, player.position, step);
+        transform.position = Vector3.MoveTowards(transform.position, GameObject.FindWithTag("Player").transform.position, step);
     }
 }
