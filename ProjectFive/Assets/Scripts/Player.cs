@@ -5,12 +5,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     //Rigidbody rigidBody;
+    public int playerHealth = 10;
     public float speed = 10.0f;
     CharacterController characterController;
     private Vector3 moveDirection = Vector3.zero;
-    private float xPos { get; set; }
-    private float yPos { get; set; }
-    private float zPos { get; set; }
 
     private void Start()
     {
@@ -21,6 +19,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         Movement();
+        HealthIsZero();
     }
 
     private void Movement()
@@ -30,19 +29,12 @@ public class Player : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
     }
 
-    public float GetXPos()
+    private void HealthIsZero()
     {
-        return xPos = transform.position.x;
+        if(playerHealth <= 0)
+        {
+            //todo add player destroyed. Maybe change state?
+            print("player ded");
+        }
     }
-
-    public float GetYPos()
-    {
-        return yPos = transform.position.y;
-    }
-
-    public float GetZPos()
-    {
-        return zPos = transform.position.z;
-    }
-
 }

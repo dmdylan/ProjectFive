@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class GameCollisions : MonoBehaviour
 {
+    Player player;
+
+    private void Awake()
+    {
+        player = GetComponent<Player>();
+    }
 
     void OnCollisionEnter(Collision collision)
     { 
@@ -11,6 +17,7 @@ public class GameCollisions : MonoBehaviour
         {
             //print(collision.gameObject.tag);
             Destroy(collision.gameObject);
+            player.playerHealth -= 1;
         }
     }
 }
