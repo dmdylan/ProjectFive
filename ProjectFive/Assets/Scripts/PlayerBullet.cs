@@ -4,15 +4,38 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int bulletSpeed;
+    private float bulletLife;
+    private float bulletSpawnTime;
 
-    // Update is called once per frame
+    private void Awake()
+    {
+        bulletSpawnTime = Time.time;
+    }
     void Update()
     {
-        
+        BulletMovement();
+        BulletLife();
+    }
+
+    private void BulletLife()
+    {
+        bulletLife = Time.time - bulletSpawnTime;
+        if(bulletLife >= 3)
+        {
+            Object.Destroy(gameObject);
+        }
+    }
+
+    private void BulletMovement()
+    {
+               
+        this.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
+        print("bullet moved");
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
     }
 }

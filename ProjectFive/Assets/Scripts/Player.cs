@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public float speed = 10.0f;
     CharacterController characterController;
     private Vector3 moveDirection = Vector3.zero;
+    public GameObject projectile;
 
     private void Start()
     {
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     {
         Movement();
         HealthIsZero();
+        PlayerFiresBullet();
     }
 
     private void Movement()
@@ -35,6 +37,16 @@ public class Player : MonoBehaviour
         {
             //todo add player destroyed. Maybe change state?
             print("player ded");
+        }
+    }
+
+    private void PlayerFiresBullet()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
+            Physics.IgnoreCollision(bullet.GetComponent<Collider>(), this.gameObject.GetComponent<Collider>());
+            print("mouse button pressed, firing bullet");
         }
     }
 }

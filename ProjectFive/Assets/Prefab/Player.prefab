@@ -107,7 +107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc091204987f7fc43a3b41ac2e81516a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: 10
   speed: 12
+  projectile: {fileID: 3667782797311800378, guid: cef37325f09e2b84992d32a043e0ab2f,
+    type: 3}
 --- !u!143 &4544275442519895604
 CharacterController:
   m_ObjectHideFlags: 0
