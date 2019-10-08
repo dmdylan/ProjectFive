@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     CharacterController characterController;
     private Vector3 moveDirection = Vector3.zero;
     public GameObject projectile;
+    private float bulletSpawnOffset = 0.5f;
 
     private void Start()
     {
@@ -42,9 +43,12 @@ public class Player : MonoBehaviour
 
     private void PlayerFiresBullet()
     {
+        //Vector3 bulletSpawnLocation = transform.position;
+        //bulletSpawnLocation.y = 1f;
+
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
+            GameObject bullet = Instantiate(projectile,transform.position, transform.rotation);
             Physics.IgnoreCollision(bullet.GetComponent<Collider>(), this.gameObject.GetComponent<Collider>());
             print("mouse button pressed, firing bullet");
         }

@@ -28,14 +28,16 @@ public class PlayerBullet : MonoBehaviour
     }
 
     private void BulletMovement()
-    {
-               
-        this.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
+    {             
+        this.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * bulletSpeed);
         print("bullet moved");
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private Vector3 GetMousePosition()
     {
+        Vector3 aimPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        aimPos.y = 0.5f;
 
+        return aimPos;
     }
 }
