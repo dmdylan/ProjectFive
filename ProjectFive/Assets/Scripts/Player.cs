@@ -4,32 +4,42 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //Rigidbody rigidBody;
     public int playerHealth = 10;
     public float speed = 10.0f;
-    CharacterController characterController;
     private Vector3 moveDirection = Vector3.zero;
     public GameObject projectile;
     private float bulletSpawnOffset = 0.5f;
+    int groundMask;
+    float camRayLength;
+    Rigidbody playerRigidBody;
+    private Vector3 moveVelocity;
+    private Camera mainCamera;
 
-    private void Start()
-    {
-        characterController = GetComponent<CharacterController>();
+    void Awake()
+    { 
+        playerRigidBody = GetComponent<Rigidbody>();
+        mainCamera = FindObjectOfType<Camera>();
+        groundMask = LayerMask.GetMask("Ground");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Movement();
         HealthIsZero();
-        PlayerFiresBullet();
+        //PlayerFiresBullet();
+    }
+
+    void FixedUpdate()
+    {
+        RotatePlayer();
+        Movement();
     }
 
     private void Movement()
     {
-        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        moveDirection *= speed;
-        characterController.Move(moveDirection * Time.deltaTime);
+        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        moveVelocity = moveDirection * speed;
+        playerRigidBody.velocity = moveVelocity;
     }
 
     private void HealthIsZero()
@@ -51,6 +61,20 @@ public class Player : MonoBehaviour
             GameObject bullet = Instantiate(projectile,transform.position, transform.rotation);
             Physics.IgnoreCollision(bullet.GetComponent<Collider>(), this.gameObject.GetComponent<Collider>());
             print("mouse button pressed, firing bullet");
+        }
+    }
+
+    private void RotatePlayer()
+    {
+        Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+
+        if (groundPlane.Raycast(cameraRay, out camRayLength))
+        {
+            Vector3 pointToLook = cameraRay.GetPoint(camRayLength);
+            Debug.DrawLine(cameraRay.origin, pointToLook, Color.black);
+
+            transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
     }
 }

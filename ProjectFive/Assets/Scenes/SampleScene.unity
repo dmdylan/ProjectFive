@@ -1158,7 +1158,7 @@ GameObject:
   - component: {fileID: 625959160}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4186,17 +4186,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4544275442519895610, guid: b723db5fc5c0f494ab7a7debdd20d389,
-        type: 3}
-      propertyPath: projectile
-      value: 
-      objectReference: {fileID: 3667782797311800378, guid: cef37325f09e2b84992d32a043e0ab2f,
-        type: 3}
-    - target: {fileID: 4544275442519895611, guid: b723db5fc5c0f494ab7a7debdd20d389,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b723db5fc5c0f494ab7a7debdd20d389, type: 3}
