@@ -7,26 +7,23 @@ public class Player : MonoBehaviour
     public int playerHealth = 10;
     public float speed = 10.0f;
     private Vector3 moveDirection = Vector3.zero;
-    public GameObject projectile;
-    private float bulletSpawnOffset = 0.5f;
-    int groundMask;
     float camRayLength;
     Rigidbody playerRigidBody;
     private Vector3 moveVelocity;
     private Camera mainCamera;
+    public ShootController shoot;
 
     void Awake()
     { 
         playerRigidBody = GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
-        groundMask = LayerMask.GetMask("Ground");
     }
 
     // Update is called once per frame
     void Update()
     {
         HealthIsZero();
-        //PlayerFiresBullet();
+        PlayerFiresBullet();
     }
 
     void FixedUpdate()
@@ -51,19 +48,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void PlayerFiresBullet()
-    {
-        //Vector3 bulletSpawnLocation = transform.position;
-        //bulletSpawnLocation.y = 1f;
-
-        if (Input.GetButtonDown("Fire1"))
-        {
-            GameObject bullet = Instantiate(projectile,transform.position, transform.rotation);
-            Physics.IgnoreCollision(bullet.GetComponent<Collider>(), this.gameObject.GetComponent<Collider>());
-            print("mouse button pressed, firing bullet");
-        }
-    }
-
     private void RotatePlayer()
     {
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -75,6 +59,18 @@ public class Player : MonoBehaviour
             Debug.DrawLine(cameraRay.origin, pointToLook, Color.black);
 
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+        }
+    }
+
+    private void PlayerFiresBullet()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            shoot.isFiring = true;
+        }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            shoot.isFiring = false;
         }
     }
 }

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
-    public int bulletSpeed;
+    public float bulletSpeed;
     private float bulletLife;
     private float bulletSpawnTime;
+    public GameObject projectile;
 
     private void Awake()
     {
@@ -28,16 +29,14 @@ public class PlayerBullet : MonoBehaviour
     }
 
     private void BulletMovement()
-    {             
-        this.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * bulletSpeed);
-        print("bullet moved");
+    {
+        transform.Translate(Vector3.forward * bulletSpeed);
     }
 
     private Vector3 GetMousePosition()
     {
         Vector3 aimPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         aimPos.y = 0.5f;
-
         return aimPos;
     }
 }
