@@ -39,4 +39,9 @@ public class PlayerBullet : MonoBehaviour
         aimPos.y = 0.5f;
         return aimPos;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(this.gameObject);
+    }
 }

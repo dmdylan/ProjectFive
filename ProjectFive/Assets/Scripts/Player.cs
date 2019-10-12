@@ -73,4 +73,14 @@ public class Player : MonoBehaviour
             shoot.isFiring = false;
         }
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            //print(collision.gameObject.tag);
+            Destroy(collision.gameObject);
+            playerHealth -= 1;
+        }
+    }
 }

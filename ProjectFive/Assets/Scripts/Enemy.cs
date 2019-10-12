@@ -24,4 +24,13 @@ public class Enemy : MonoBehaviour
             Object.Destroy(gameObject);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "PlayerBullet")
+        {
+            Debug.Log("Bullet hit enemy");
+            enemyHealth -= 1;
+        }
+    }
 }
