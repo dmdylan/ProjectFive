@@ -12,7 +12,8 @@ public class Player : MonoBehaviour
     private Vector3 moveVelocity;
     private Camera mainCamera;
     public ShootController shoot;
-
+    public int playerPoints;
+    
     void Awake()
     { 
         playerRigidBody = GetComponent<Rigidbody>();

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int enemyHealth;
+    public Player player;
 
     void Start()
     {
@@ -22,6 +23,7 @@ public class Enemy : MonoBehaviour
         if(enemyHealth <= 0)
         {
             Object.Destroy(gameObject);
+            player.playerPoints += 5;
         }
     }
 
