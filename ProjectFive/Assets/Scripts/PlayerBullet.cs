@@ -8,10 +8,14 @@ public class PlayerBullet : MonoBehaviour
     private float bulletLife;
     private float bulletSpawnTime;
     public GameObject projectile;
+    private Player player;
+    private Collider bullet;
 
-    private void Awake()
+    private void Start()
     {
         bulletSpawnTime = Time.time;
+        //Collider bulletCollider = Instantiate(bullet) as Collider;
+        //Rigidbody bullet = Instantiate(PlayerBullet) as Rigidbody;
     }
     void Update()
     {
@@ -42,6 +46,11 @@ public class PlayerBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if(collision.gameObject.tag == "Player")
+        {
+            //Physics.IgnoreCollision(bulletCollider.GetComponent<Collider>(), player.GetComponent<Collider>());
+        }
+
         Destroy(this.gameObject);
     }
 }

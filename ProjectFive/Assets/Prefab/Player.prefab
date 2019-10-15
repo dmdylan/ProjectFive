@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1874990449}
   - component: {fileID: 5173019249606973745}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874990448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.646}
+  m_LocalPosition: {x: 0, y: 0, z: 0.808}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4544275442519895606}
@@ -45,8 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFiring: 0
   bullet: {fileID: 2544065080471484105, guid: 79fd0cafab54842408a6af160b4cc997, type: 3}
-  bulletSpeed: 0.2
-  timeBetweenShots: 0.05
+  bulletSpeed: 0.3
+  timeBetweenShots: 0.2
   firePoint: {fileID: 1874990449}
 --- !u!1 &4544275442519895613
 GameObject:
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 4544275442519895611}
   - component: {fileID: 4544275442519895610}
   - component: {fileID: -653329187185368309}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -155,9 +155,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc091204987f7fc43a3b41ac2e81516a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 10
+  playerHealth: 20
   speed: 12
   shoot: {fileID: 5173019249606973745}
+  playerPoints: 0
 --- !u!54 &-653329187185368309
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -172,5 +173,5 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0

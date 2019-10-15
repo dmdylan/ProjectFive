@@ -1,0 +1,42 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class PlayerUIUpdates : MonoBehaviour
+{
+    [SerializeField] private Text pointsText;
+    [SerializeField] private Text playerHealthText;
+    [SerializeField] private Player player;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        pointsText.text = player.playerPoints.ToString();
+        playerHealthText.text = player.playerHealth.ToString();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        UpdatePlayerScore(); 
+        UpdatePlayerHealthText();
+    }
+
+    void UpdatePlayerScore()
+    {
+        string pointText;
+        int playerScore = player.playerPoints;
+        pointText = string.Format("Points: {0}", playerScore);
+        pointsText.text = pointText;
+    }
+    
+    void UpdatePlayerHealthText()
+    {
+        string healthText;
+        int playerHealthValue = player.playerHealth;
+        healthText = string.Format("Health: {0}", playerHealthValue);
+        playerHealthText.text = healthText;
+        print("updating health value");
+    }
+}

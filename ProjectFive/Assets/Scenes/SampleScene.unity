@@ -923,7 +923,6 @@ GameObject:
   - component: {fileID: 460046887}
   - component: {fileID: 460046889}
   - component: {fileID: 460046888}
-  - component: {fileID: 460046890}
   m_Layer: 5
   m_Name: Points
   m_TagString: Untagged
@@ -990,20 +989,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460046886}
   m_CullTransparentMesh: 0
---- !u!114 &460046890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 460046886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46b640f5a2a76ff479766c690e6da16f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 460046888}
-  player: {fileID: 4544275442519895610, guid: b723db5fc5c0f494ab7a7debdd20d389, type: 3}
 --- !u!1001 &509464994
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1254,7 +1239,7 @@ Transform:
   - {fileID: 1198049525}
   - {fileID: 2021771906}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &640237037
 GameObject:
@@ -1611,6 +1596,7 @@ GameObject:
   - component: {fileID: 785427845}
   - component: {fileID: 785427844}
   - component: {fileID: 785427843}
+  - component: {fileID: 785427847}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1699,6 +1685,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &785427847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785427842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46b640f5a2a76ff479766c690e6da16f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsText: {fileID: 460046888}
+  playerHealthText: {fileID: 1792623103}
+  player: {fileID: 4544275442519895610, guid: b723db5fc5c0f494ab7a7debdd20d389, type: 3}
 --- !u!1001 &789425309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2177,7 +2178,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.0000005, z: 1.0000005}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -3268,7 +3269,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Health: 10'
+  m_Text: 'Health: 0'
 --- !u!222 &1792623104
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4116,7 +4117,7 @@ PrefabInstance:
     - target: {fileID: 4544275442519895606, guid: b723db5fc5c0f494ab7a7debdd20d389,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4544275442519895606, guid: b723db5fc5c0f494ab7a7debdd20d389,
         type: 3}
@@ -4146,6 +4147,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 5905516301464092366, guid: 49444267831962b488bc55a377128973,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5905516301464092367, guid: 49444267831962b488bc55a377128973,
         type: 3}
@@ -4185,7 +4191,7 @@ PrefabInstance:
     - target: {fileID: 5905516301464092367, guid: 49444267831962b488bc55a377128973,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5905516301464092367, guid: 49444267831962b488bc55a377128973,
         type: 3}
@@ -4201,6 +4207,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5905516301464092352, guid: 49444267831962b488bc55a377128973,
+        type: 3}
+      propertyPath: spawnTime
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49444267831962b488bc55a377128973, type: 3}

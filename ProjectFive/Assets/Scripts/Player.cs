@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int playerHealth = 10;
+    public int playerHealth = 20;
     public float speed = 10.0f;
     private Vector3 moveDirection = Vector3.zero;
     float camRayLength;
@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     private Camera mainCamera;
     public ShootController shoot;
     public int playerPoints;
-    
+
     void Awake()
     { 
         playerRigidBody = GetComponent<Rigidbody>();
@@ -58,7 +58,6 @@ public class Player : MonoBehaviour
         {
             Vector3 pointToLook = cameraRay.GetPoint(camRayLength);
             Debug.DrawLine(cameraRay.origin, pointToLook, Color.black);
-
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
     }
@@ -78,8 +77,7 @@ public class Player : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy")
-        {
-            //print(collision.gameObject.tag);
+        {        
             Destroy(collision.gameObject);
             playerHealth -= 1;
         }

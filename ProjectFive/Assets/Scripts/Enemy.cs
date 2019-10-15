@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int enemyHealth;
-    public Player player;
+    [SerializeField] private Player player;
 
     void Start()
     {
@@ -31,7 +31,6 @@ public class Enemy : MonoBehaviour
     {
         if(collision.gameObject.tag == "PlayerBullet")
         {
-            Debug.Log("Bullet hit enemy");
             enemyHealth -= 1;
         }
     }
