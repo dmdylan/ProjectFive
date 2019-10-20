@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int playerHealth = 20;
+    [SerializeField] private int playerStartingHealth;
+    public int playerCurrentHealth;
     public float speed = 10.0f;
     private Vector3 moveDirection = Vector3.zero;
     float camRayLength;
@@ -18,6 +19,11 @@ public class Player : MonoBehaviour
     { 
         playerRigidBody = GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
+    }
+
+    private void Start()
+    {
+        playerCurrentHealth = playerStartingHealth;
     }
 
     // Update is called once per frame
@@ -42,7 +48,7 @@ public class Player : MonoBehaviour
 
     private void HealthIsZero()
     {
-        if(playerHealth <= 0)
+        if(playerCurrentHealth <= 0)
         {
             //todo add player destroyed. Maybe change state?
             print("player ded");
@@ -79,7 +85,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {        
             Destroy(collision.gameObject);
-            playerHealth -= 1;
+            //playerCurrentHealth -= 1;
         }
     }
 }

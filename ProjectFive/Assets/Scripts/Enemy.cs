@@ -33,5 +33,10 @@ public class Enemy : MonoBehaviour
         {
             enemyHealth -= 1;
         }
+
+        if(collision.gameObject.tag == "Player")
+        {
+            player.playerCurrentHealth -= 1;
+        }
     }
 }
