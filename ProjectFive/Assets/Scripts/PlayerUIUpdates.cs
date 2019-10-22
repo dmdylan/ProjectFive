@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerUIUpdates : MonoBehaviour
 {
-    [SerializeField] private Text pointsText;
-    [SerializeField] private Text playerHealthText;
+    [SerializeField] private TextMeshProUGUI pointsText;
+    [SerializeField] private TextMeshProUGUI playerHealthText;
     [SerializeField] private Player player;
 
     // Start is called before the first frame update
     void Start()
     {
         pointsText.text = player.playerPoints.ToString();
-        //playerHealthText.text = player.playerCurrentHealth.ToString();
+        
     }
 
     // Update is called once per frame

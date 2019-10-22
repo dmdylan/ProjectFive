@@ -7,11 +7,6 @@ public class Enemy : MonoBehaviour
     public int enemyHealth;
     [SerializeField] private Player player;
 
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
