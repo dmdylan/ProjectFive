@@ -10,10 +10,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HealthIsZero();
+        IsHealthZero();
     }
 
-    private void HealthIsZero()
+    private void IsHealthZero()
     {
         if(enemyHealth <= 0)
         {

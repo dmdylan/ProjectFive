@@ -14,7 +14,7 @@ public class PlayerUIUpdates : MonoBehaviour
     void Start()
     {
         pointsText.text = player.playerPoints.ToString();
-        
+        playerHealthText.text = player.playerCurrentHealth.ToString("Health: 20");
     }
 
     // Update is called once per frame
@@ -38,6 +38,5 @@ public class PlayerUIUpdates : MonoBehaviour
         int playerHealthValue = player.playerCurrentHealth;
         healthText = string.Format("Health: {0}", playerHealthValue);
         playerHealthText.text = healthText;
-        print(player.playerCurrentHealth);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private int playerStartingHealth;
+    private int playerStartingHealth;
     public int playerCurrentHealth;
     public float speed = 10.0f;
     private Vector3 moveDirection = Vector3.zero;
@@ -23,13 +23,14 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        playerCurrentHealth = playerStartingHealth;
+        SetPlayerHealthAtGameStart();
+        SetPlayerPointsAtGameStart();
     }
 
     // Update is called once per frame
     void Update()
     {
-        HealthIsZero();
+        IsHealthIsZero();
         PlayerFiresBullet();
     }
 
@@ -46,11 +47,10 @@ public class Player : MonoBehaviour
         playerRigidBody.velocity = moveVelocity;
     }
 
-    private void HealthIsZero()
+    private void IsHealthIsZero()
     {
         if(playerCurrentHealth <= 0)
         {
-            //todo add player destroyed. Maybe change state?
             print("player ded");
         }
     }
@@ -84,8 +84,18 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {        
-            Destroy(collision.gameObject);
-            //playerCurrentHealth -= 1;
+            Destroy(collision.gameObject);            
         }
+    }
+
+    private void SetPlayerHealthAtGameStart()
+    {
+        playerStartingHealth = 20;
+        playerCurrentHealth = playerStartingHealth;
+    }
+
+    private void SetPlayerPointsAtGameStart()
+    {
+        playerPoints = 0;
     }
 }

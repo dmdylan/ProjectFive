@@ -155,7 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc091204987f7fc43a3b41ac2e81516a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStartingHealth: 20
   playerCurrentHealth: 20
   speed: 12
   shoot: {fileID: 5173019249606973745}
