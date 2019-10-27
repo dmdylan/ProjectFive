@@ -8,6 +8,7 @@ public class EnemyManager : MonoBehaviour
     public float spawnTime = 1f;
     public Transform[] spawnPoints;
     private bool debug = true;
+    public int numberOfUsedSpawns;
 
 
     // Start is called before the first frame update
@@ -26,10 +27,20 @@ public class EnemyManager : MonoBehaviour
 
     void Spawn()
     {
+        List<Transform> freeSpawnPoints = new List<Transform>(spawnPoints);
         if (debug == true)
         {
-        int spawnPointIndex = Random.Range(0, spawnPoints.Length);
-        Instantiate(enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+            for(int i = 0; i< numberOfUsedSpawns; i++)
+            {
+                if (freeSpawnPoints.Count <= 0)
+                    return;
+
+                int spawnPointIndex = Random.Range(0, spawnPoints.Length);
+                Transform pos = freeSpawnPoints[spawnPointIndex];
+                freeSpawnPoints.RemoveAt(spawnPointIndex);
+                //Instantiate(enemy, pos.position, pos.rotation);
+                //Instantiate(enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+            }
         }
     }
 

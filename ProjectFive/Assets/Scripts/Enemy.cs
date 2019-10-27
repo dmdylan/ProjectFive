@@ -33,5 +33,10 @@ public class Enemy : MonoBehaviour
         {
             player.playerCurrentHealth -= 1;
         }
+
+        if(collision.gameObject.tag == "EnemyBoundary")
+        {
+            Destroy(gameObject);
+        }
     }
 }
