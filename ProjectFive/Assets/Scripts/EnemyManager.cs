@@ -38,7 +38,7 @@ public class EnemyManager : MonoBehaviour
                 int spawnPointIndex = Random.Range(0, spawnPoints.Length);
                 Transform pos = freeSpawnPoints[spawnPointIndex];
                 freeSpawnPoints.RemoveAt(spawnPointIndex);
-                //Instantiate(enemy, pos.position, pos.rotation);
+                Instantiate(enemy, pos.position, pos.rotation);
                 //Instantiate(enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
             }
         }
