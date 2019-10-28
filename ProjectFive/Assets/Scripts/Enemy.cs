@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
@@ -15,7 +13,7 @@ public class Enemy : MonoBehaviour
 
     private void IsHealthZero()
     {
-        if(enemyHealth <= 0)
+        if (enemyHealth <= 0)
         {
             Object.Destroy(gameObject);
             player.playerPoints += 5;
@@ -24,17 +22,17 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "PlayerBullet")
+        if (collision.gameObject.tag == "PlayerBullet")
         {
             enemyHealth -= 1;
         }
 
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             player.playerCurrentHealth -= 1;
         }
 
-        if(collision.gameObject.tag == "EnemyBoundary")
+        if (collision.gameObject.tag == "EnemyBoundary")
         {
             Destroy(gameObject);
         }

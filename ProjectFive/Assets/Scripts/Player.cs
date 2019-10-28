@@ -30,7 +30,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        IsHealthIsZero();
         PlayerFiresBullet();
     }
 
@@ -45,14 +44,6 @@ public class Player : MonoBehaviour
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         moveVelocity = moveDirection * speed;
         playerRigidBody.velocity = moveVelocity;
-    }
-
-    private void IsHealthIsZero()
-    {
-        if(playerCurrentHealth <= 0)
-        {
-            print("player ded");
-        }
     }
 
     private void RotatePlayer()

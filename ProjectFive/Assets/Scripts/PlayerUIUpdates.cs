@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 public class PlayerUIUpdates : MonoBehaviour
 {
@@ -20,7 +17,7 @@ public class PlayerUIUpdates : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdatePlayerScore(); 
+        UpdatePlayerScore();
         UpdatePlayerHealthText();
     }
 
@@ -31,7 +28,7 @@ public class PlayerUIUpdates : MonoBehaviour
         pointText = string.Format("Points: {0}", playerScore);
         pointsText.text = pointText;
     }
-    
+
     void UpdatePlayerHealthText()
     {
         string healthText;
