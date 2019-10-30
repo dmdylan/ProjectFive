@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManagement : MonoBehaviour
 {
-    private bool theGameIsNotOver;
+    private bool theGameIsNotOver = true;
     Player player;
 
     // Start is called before the first frame update

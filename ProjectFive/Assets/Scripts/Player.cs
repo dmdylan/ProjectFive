@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         PlayerFiresBullet();
+        PlayerTeleportAbility();
     }
 
     void FixedUpdate()
@@ -88,5 +89,20 @@ public class Player : MonoBehaviour
     private void SetPlayerPointsAtGameStart()
     {
         playerPoints = 0;
+    }
+
+    private void PlayerTeleportAbility()
+    {            
+        Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (groundPlane.Raycast(cameraRay, out camRayLength))
+            {
+                Vector3 pointToLook = cameraRay.GetPoint(camRayLength);
+                transform.position = new Vector3(pointToLook.x, transform.position.y, pointToLook.z);
+            }
+        }
     }
 }
