@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     {
         PlayerFiresBullet();
         PlayerTeleportAbility();
+        PlayerTimeControlAbility();
     }
 
     void FixedUpdate()
@@ -104,5 +105,20 @@ public class Player : MonoBehaviour
                 transform.position = new Vector3(pointToLook.x, transform.position.y, pointToLook.z);
             }
         }
+    }
+
+    private void PlayerTimeControlAbility()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if(Time.timeScale == 1f)
+            {
+                Time.timeScale = .5f;
+            }
+            else
+            {
+                Time.timeScale = 1f;
+            }
+        }       
     }
 }
