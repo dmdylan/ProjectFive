@@ -3,7 +3,7 @@
 public class Enemy : MonoBehaviour
 {
     public int enemyHealth;
-    [SerializeField] private Player player;
+    //public GameManagement gameManager;
 
     // Update is called once per frame
     void Update()
@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
         if (enemyHealth <= 0)
         {
             Object.Destroy(gameObject);
-            player.playerPoints += 5;
+            //gameManager.playerScoreUI += 5;
         }
     }
 
@@ -25,11 +25,6 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "PlayerBullet")
         {
             enemyHealth -= 1;
-        }
-
-        if (collision.gameObject.tag == "Player")
-        {
-            player.playerCurrentHealth -= 1;
         }
 
         if (collision.gameObject.tag == "EnemyBoundary")

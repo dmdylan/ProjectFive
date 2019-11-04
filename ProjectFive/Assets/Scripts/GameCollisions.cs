@@ -18,7 +18,7 @@ public class GameCollisions : MonoBehaviour
         {
             //print(collision.gameObject.tag);
             Destroy(collision.gameObject);
-            player.playerHealth -= 1;
+            player.playerCurrentHealth -= 1;
         }
     }
     */

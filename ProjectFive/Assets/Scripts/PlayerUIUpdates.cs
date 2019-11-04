@@ -26,7 +26,7 @@ public class PlayerUIUpdates : MonoBehaviour
         string pointText;
         int playerScore = player.playerPoints;
         pointText = string.Format("Points: {0}", playerScore);
-        pointsText.text = pointText;
+        pointsText.text = player.playerPoints.ToString();
     }
 
     void UpdatePlayerHealthText()

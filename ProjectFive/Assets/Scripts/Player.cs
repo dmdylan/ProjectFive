@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private int playerStartingHealth;
+    private int playerStartingHealth = 20;
     public int playerCurrentHealth;
     public float speed = 10.0f;
     private Vector3 moveDirection = Vector3.zero;
@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     private Vector3 moveVelocity;
     private Camera mainCamera;
     public ShootController shoot;
-    public int playerPoints;
+    public int playerPoints = 0;
 
     void Awake()
     { 
@@ -23,8 +23,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        SetPlayerHealthAtGameStart();
-        SetPlayerPointsAtGameStart();
+        //SetPlayerHealthAtGameStart();
+        //SetPlayerPointsAtGameStart();
     }
 
     // Update is called once per frame
@@ -77,7 +77,8 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {        
-            Destroy(collision.gameObject);            
+            Destroy(collision.gameObject);
+            playerCurrentHealth -= 1;
         }
     }
 

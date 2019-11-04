@@ -6,11 +6,16 @@ public class GameManagement : MonoBehaviour
 {
     private bool theGameIsNotOver = true;
     Player player;
+    public int playerScoreUI;
+    Enemy enemies;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         player = FindObjectOfType<Player>();
+        enemies = FindObjectOfType<Enemy>();
+        player.playerPoints = 0;
+        player.playerCurrentHealth = 20;
     }
 
     // Update is called once per frame
@@ -18,6 +23,7 @@ public class GameManagement : MonoBehaviour
     {
         IsThePlayerIsDead();
         ChangeGameState();
+        UpdatePlayerScore();
     }
 
     private void ChangeGameState()
@@ -42,6 +48,14 @@ public class GameManagement : MonoBehaviour
         if(player.playerCurrentHealth <= 0)
         {
             theGameIsNotOver = false;
+        }
+    }
+
+    private void UpdatePlayerScore()
+    {
+        if(enemies.enemyHealth == 0)
+        {
+            player.playerPoints += 5;
         }
     }
 }

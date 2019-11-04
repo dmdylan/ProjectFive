@@ -247,10 +247,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc091204987f7fc43a3b41ac2e81516a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCurrentHealth: -150
+  playerCurrentHealth: -85
   speed: 12
   shoot: {fileID: 5173019249606973745}
-  playerPoints: 705
+  playerPoints: 90
 --- !u!54 &-653329187185368309
 Rigidbody:
   m_ObjectHideFlags: 0
