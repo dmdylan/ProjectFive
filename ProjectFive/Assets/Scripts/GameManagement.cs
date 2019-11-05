@@ -5,17 +5,14 @@ using UnityEngine.SceneManagement;
 public class GameManagement : MonoBehaviour
 {
     private bool theGameIsNotOver = true;
-    Player player;
-    public int playerScoreUI;
-    Enemy enemies;
+    public static int playerTotalPoints;
+    public SimpleHealthBar healthBar;
 
     // Start is called before the first frame update
     void Awake()
     {
-        player = FindObjectOfType<Player>();
-        enemies = FindObjectOfType<Enemy>();
-        player.playerPoints = 0;
-        player.playerCurrentHealth = 20;
+        playerTotalPoints = 0;
+        Player.playerCurrentHealth = 20;
     }
 
     // Update is called once per frame
@@ -23,7 +20,7 @@ public class GameManagement : MonoBehaviour
     {
         IsThePlayerIsDead();
         ChangeGameState();
-        UpdatePlayerScore();
+        UpdateHealthBar();
     }
 
     private void ChangeGameState()
@@ -45,17 +42,14 @@ public class GameManagement : MonoBehaviour
 
     private void IsThePlayerIsDead()
     {
-        if(player.playerCurrentHealth <= 0)
+        if(Player.playerCurrentHealth <= 0)
         {
             theGameIsNotOver = false;
         }
     }
 
-    private void UpdatePlayerScore()
+    private void UpdateHealthBar()
     {
-        if(enemies.enemyHealth == 0)
-        {
-            player.playerPoints += 5;
-        }
+        healthBar.UpdateBar(Player.playerCurrentHealth, Player.playerStartingHealth);
     }
 }

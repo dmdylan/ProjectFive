@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private int playerStartingHealth = 20;
-    public int playerCurrentHealth;
+    public static float playerStartingHealth = 20f;
+    public static float playerCurrentHealth;
     public float speed = 10.0f;
     private Vector3 moveDirection = Vector3.zero;
     float camRayLength;
@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     private Vector3 moveVelocity;
     private Camera mainCamera;
     public ShootController shoot;
-    public int playerPoints = 0;
 
     void Awake()
     { 
@@ -23,8 +22,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        //SetPlayerHealthAtGameStart();
-        //SetPlayerPointsAtGameStart();
+
     }
 
     // Update is called once per frame
@@ -80,17 +78,6 @@ public class Player : MonoBehaviour
             Destroy(collision.gameObject);
             playerCurrentHealth -= 1;
         }
-    }
-
-    private void SetPlayerHealthAtGameStart()
-    {
-        playerStartingHealth = 20;
-        playerCurrentHealth = playerStartingHealth;
-    }
-
-    private void SetPlayerPointsAtGameStart()
-    {
-        playerPoints = 0;
     }
 
     private void PlayerTeleportAbility()

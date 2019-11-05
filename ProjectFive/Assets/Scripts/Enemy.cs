@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
         if (enemyHealth <= 0)
         {
             Object.Destroy(gameObject);
-            //gameManager.playerScoreUI += 5;
+            GameManagement.playerTotalPoints += 5;
         }
     }
 
