@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &121586796
 Transform:
@@ -106,7 +106,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1874990449
 Transform:
@@ -137,7 +137,7 @@ MonoBehaviour:
   isFiring: 0
   bullet: {fileID: 2544065080471484105, guid: 79fd0cafab54842408a6af160b4cc997, type: 3}
   bulletSpeed: 0.3
-  timeBetweenShots: 0.2
+  timeBetweenShots: 0.15
   firePoint: {fileID: 1874990449}
 --- !u!1 &4544275442519895613
 GameObject:
@@ -158,7 +158,7 @@ GameObject:
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4544275442519895606
 Transform:
@@ -247,10 +247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc091204987f7fc43a3b41ac2e81516a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCurrentHealth: -85
   speed: 12
   shoot: {fileID: 5173019249606973745}
-  playerPoints: 90
 --- !u!54 &-653329187185368309
 Rigidbody:
   m_ObjectHideFlags: 0

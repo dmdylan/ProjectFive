@@ -3,12 +3,17 @@
 public class Enemy : MonoBehaviour
 {
     public int enemyHealth;
-    //public GameManagement gameManager;
+    private Renderer render;
 
-    // Update is called once per frame
+    private void Awake()
+    {
+        render = GetComponent<Renderer>();        
+    }
+
     void Update()
     {
         IsHealthZero();
+        ChangeColorBasedOnHealthValue();
     }
 
     private void IsHealthZero()
@@ -16,7 +21,7 @@ public class Enemy : MonoBehaviour
         if (enemyHealth <= 0)
         {
             Object.Destroy(gameObject);
-            GameManagement.playerTotalPoints += 5;
+            GameManagement.playerTotalPoints += 1;
         }
     }
 
@@ -30,6 +35,15 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "EnemyBoundary")
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void ChangeColorBasedOnHealthValue()
+    {
+        Color color = new Color(1, 0.3607f, 0.3607f);
+        if(enemyHealth == 1)
+        {
+            render.material.SetColor("_Color", color);
         }
     }
 }
