@@ -7,6 +7,7 @@ public class GameManagement : MonoBehaviour
     private bool theGameIsNotOver = true;
     public static int playerTotalPoints;
     public SimpleHealthBar healthBar;
+    public SimpleHealthBar timeSlowEnergyBar;
 
     // Start is called before the first frame update
     void Awake()
@@ -21,6 +22,7 @@ public class GameManagement : MonoBehaviour
         IsThePlayerIsDead();
         ChangeGameState();
         UpdateHealthBar();
+        UpdateTimeSlowEnergyBar();
     }
 
     private void ChangeGameState()
@@ -51,5 +53,10 @@ public class GameManagement : MonoBehaviour
     private void UpdateHealthBar()
     {
         healthBar.UpdateBar(Player.playerCurrentHealth, Player.playerStartingHealth);
+    }
+
+    private void UpdateTimeSlowEnergyBar()
+    {
+        timeSlowEnergyBar.UpdateBar(Player.playerCurrentSlowTimeEnergy, Player.playerMaxSlowTimeEnergy);
     }
 }

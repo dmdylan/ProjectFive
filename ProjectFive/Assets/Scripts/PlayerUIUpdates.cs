@@ -21,7 +21,7 @@ public class PlayerUIUpdates : MonoBehaviour
     {
         string pointText;
         int playerScore = GameManagement.playerTotalPoints;
-        pointText = string.Format("Points:{0}", playerScore);
+        pointText = string.Format("Points:{0:D4}", playerScore);
         pointsText.text = pointText;
     }
 }

@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     public static float playerStartingHealth = 20f;
     public static float playerCurrentHealth;
+    public static float playerMaxSlowTimeEnergy = 1f;
+    public static float playerCurrentSlowTimeEnergy;
     public float speed = 10.0f;
     private Vector3 moveDirection = Vector3.zero;
     float camRayLength;
@@ -18,11 +20,6 @@ public class Player : MonoBehaviour
     { 
         playerRigidBody = GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
-    }
-
-    private void Start()
-    {
-
     }
 
     // Update is called once per frame
@@ -101,7 +98,7 @@ public class Player : MonoBehaviour
         {
             if(Time.timeScale == 1f)
             {
-                Time.timeScale = .5f;
+                Time.timeScale = .5f;             
             }
             else
             {
