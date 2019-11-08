@@ -8,7 +8,7 @@ public class PlayerUIUpdates : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //pointsText.text = GameManagement.playerTotalPoints.ToString();
+
     }
 
     // Update is called once per frame

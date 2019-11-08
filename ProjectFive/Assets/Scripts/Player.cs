@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private Vector3 moveVelocity;
     private Camera mainCamera;
     public ShootController shoot;
+    private bool timeShiftActive;
 
     void Awake()
     { 
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
         PlayerFiresBullet();
         PlayerTeleportAbility();
         PlayerTimeControlAbility();
+        ManagePlayerTimeSlowEnergy();
     }
 
     void FixedUpdate()
@@ -94,16 +96,38 @@ public class Player : MonoBehaviour
 
     private void PlayerTimeControlAbility()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (timeShiftActive == false)
         {
-            if(Time.timeScale == 1f)
+            if (Input.GetKeyDown(KeyCode.LeftShift) && playerCurrentSlowTimeEnergy > 0)
             {
-                Time.timeScale = .5f;             
+                Time.timeScale = .5f;
+                timeShiftActive = true;
             }
             else
             {
                 Time.timeScale = 1f;
+                timeShiftActive = false;
             }
-        }       
+        }
+    }
+
+    private void ManagePlayerTimeSlowEnergy()
+    {
+        if (timeShiftActive == true)
+        {
+            playerCurrentSlowTimeEnergy -= .01f;
+            if (playerCurrentSlowTimeEnergy <= 0)
+            {
+                timeShiftActive = false;
+            }
+        }
+        else
+        {
+            playerCurrentSlowTimeEnergy += .01f;
+            if(playerCurrentSlowTimeEnergy >= playerMaxSlowTimeEnergy)
+            {
+                playerCurrentSlowTimeEnergy = playerMaxSlowTimeEnergy;
+            }
+        }
     }
 }
