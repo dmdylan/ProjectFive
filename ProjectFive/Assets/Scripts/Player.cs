@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public static float playerCurrentHealth;
     public static float playerMaxSlowTimeEnergy = 1f;
     public static float playerCurrentSlowTimeEnergy;
+    private bool cannotTeleport;
     public float speed = 10.0f;
     private Vector3 moveDirection = Vector3.zero;
     float camRayLength;
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
     private Camera mainCamera;
     public ShootController shoot;
     private bool timeShiftActive;
+    public static float playerTeleportTimer = 10f;
 
     void Awake()
     { 
@@ -27,9 +29,9 @@ public class Player : MonoBehaviour
     void Update()
     {
         PlayerFiresBullet();
-        PlayerTeleportAbility();
         PlayerTimeControlAbility();
         ManagePlayerTimeSlowEnergy();
+        CanPlayerTeleport();
     }
 
     void FixedUpdate()
@@ -91,6 +93,24 @@ public class Player : MonoBehaviour
                 Vector3 pointToLook = cameraRay.GetPoint(camRayLength);
                 transform.position = new Vector3(pointToLook.x, transform.position.y, pointToLook.z);
             }
+            cannotTeleport = true;
+        }
+    }
+
+    private void CanPlayerTeleport()
+    {
+        if (cannotTeleport == true)
+        {
+            playerTeleportTimer -= Time.deltaTime;
+            if(playerTeleportTimer < 0)
+            {
+                cannotTeleport = false;
+                playerTeleportTimer = 10f;
+            }
+        }
+        else
+        {
+            PlayerTeleportAbility();
         }
     }
 
@@ -113,6 +133,7 @@ public class Player : MonoBehaviour
 
     private void ManagePlayerTimeSlowEnergy()
     {
+        //todo fix this so it isn't tied to framerate 
         if (timeShiftActive == true)
         {
             playerCurrentSlowTimeEnergy -= .01f;

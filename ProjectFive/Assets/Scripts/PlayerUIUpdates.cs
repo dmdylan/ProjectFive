@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerUIUpdates : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI pointsText;
+    [SerializeField] private TextMeshProUGUI pointsText = null;
 
     // Start is called before the first frame update
     void Start()

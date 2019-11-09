@@ -54,7 +54,8 @@ public class SimpleHealthBarWindow : EditorWindow
 	bool configuredFontSize = false;
 
 	static Texture2D introThumbnail;
-	static WWW introThumbnailPage;
+    [System.Obsolete]
+    static WWW introThumbnailPage;
 
 	
 	class DocumentationInfo

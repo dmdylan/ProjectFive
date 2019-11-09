@@ -8,6 +8,7 @@ public class GameManagement : MonoBehaviour
     public static int playerTotalPoints;
     public SimpleHealthBar healthBar;
     public SimpleHealthBar timeSlowEnergyBar;
+    public SimpleHealthBar teleportEnergyBar;
 
     // Start is called before the first frame update
     void Awake()
@@ -23,6 +24,7 @@ public class GameManagement : MonoBehaviour
         ChangeGameState();
         UpdateHealthBar();
         UpdateTimeSlowEnergyBar();
+        UpdateTeleportRechargeBar();
     }
 
     private void ChangeGameState()
@@ -58,5 +60,10 @@ public class GameManagement : MonoBehaviour
     private void UpdateTimeSlowEnergyBar()
     {
         timeSlowEnergyBar.UpdateBar(Player.playerCurrentSlowTimeEnergy, Player.playerMaxSlowTimeEnergy);
+    }
+
+    private void UpdateTeleportRechargeBar()
+    {
+        teleportEnergyBar.UpdateBar(Player.playerTeleportTimer, 10f);
     }
 }
