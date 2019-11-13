@@ -1,13 +1,14 @@
-﻿using TMPro;
+﻿using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class PlayerUIUpdates : MonoBehaviour
+public class GameOverScoreDisplay : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI pointsText = null;
     public IntReference playerPoints;
+    [SerializeField] private TextMeshProUGUI pointsText = null;
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
         UpdatePlayerScore();
     }

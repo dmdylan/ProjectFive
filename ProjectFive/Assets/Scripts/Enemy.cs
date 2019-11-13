@@ -4,6 +4,7 @@ public class Enemy : MonoBehaviour
 {
     public int enemyHealth;
     private Renderer render;
+    public IntReference playerPoints;
 
     private void Awake()
     {
@@ -21,7 +22,7 @@ public class Enemy : MonoBehaviour
         if (enemyHealth <= 0)
         {
             Object.Destroy(gameObject);
-            GameManagement.playerTotalPoints += 1;
+            playerPoints.Value++;
         }
     }
 

@@ -9,11 +9,11 @@ public class GameManagement : MonoBehaviour
     public SimpleHealthBar healthBar;
     public SimpleHealthBar timeSlowEnergyBar;
     public SimpleHealthBar teleportEnergyBar;
-
+    public IntReference playerPoints;
     // Start is called before the first frame update
     void Awake()
     {
-        playerTotalPoints = 0;
+        playerPoints.Value = 0;
         Player.playerCurrentHealth = 20;
     }
 

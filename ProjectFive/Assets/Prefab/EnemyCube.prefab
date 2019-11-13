@@ -138,4 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 2
-  player: {fileID: 4544275442519895610, guid: b723db5fc5c0f494ab7a7debdd20d389, type: 3}
+  playerPoints:
+    useConstant: 0
+    constantValue: 0
+    intVariable: {fileID: 11400000, guid: 10a345f9f377a4640aea5b600867c999, type: 2}
