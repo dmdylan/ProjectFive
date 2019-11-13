@@ -3,7 +3,7 @@ My first video game fully developed by me without following tutorials or classes
 
 Some gifs of the game through various stages of development can be found below. Some video clips of the game can also be found on my twitter https://twitter.com/SpartanFanDMD. 
 
-https://imgur.com/a/aMQ2fLb
+https://imgur.com/VgBQuP3
 
 https://imgur.com/l3D7JqT
 
