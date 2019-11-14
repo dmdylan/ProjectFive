@@ -5,16 +5,16 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public GameObject enemy;
-    public float spawnTime = 1f;
     public Transform[] spawnPoints;
     private bool debug = true;
     public int numberOfUsedSpawns;
+    public FloatReference enemySpawnTime;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("Spawn", spawnTime, spawnTime);
+        InvokeRepeating("Spawn", enemySpawnTime.Value, enemySpawnTime.Value);
     }
 
     private void Update()
@@ -39,14 +39,13 @@ public class EnemyManager : MonoBehaviour
                 Transform pos = freeSpawnPoints[spawnPointIndex];
                 freeSpawnPoints.RemoveAt(spawnPointIndex);
                 Instantiate(enemy, pos.position, pos.rotation);
-                //Instantiate(enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
             }
         }
     }
 
     private void RespondToDebugKeys()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             debug = !debug;
         }

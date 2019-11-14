@@ -10,6 +10,7 @@ public class ShootController : MonoBehaviour
     public float timeBetweenShots;
     private float shotCounter;
     public Transform firePoint;
+    public FloatReference playerFireRate;
 
     void Update()
     {
@@ -24,7 +25,7 @@ public class ShootController : MonoBehaviour
             shotCounter -= Time.deltaTime;
             if(shotCounter <= 0)
             {
-                shotCounter = timeBetweenShots;
+                shotCounter = playerFireRate.Value;
                 PlayerBullet newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as PlayerBullet;
                 newBullet.bulletSpeed = bulletSpeed;
             }

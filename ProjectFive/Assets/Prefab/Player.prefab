@@ -139,6 +139,10 @@ MonoBehaviour:
   bulletSpeed: 0.3
   timeBetweenShots: 0.12
   firePoint: {fileID: 1874990449}
+  playerFireRate:
+    useConstant: 0
+    constantValue: 0
+    floatVariable: {fileID: 11400000, guid: 59a6e87340ae56b40b1f8e0ad617e3b2, type: 2}
 --- !u!1 &4544275442519895613
 GameObject:
   m_ObjectHideFlags: 0

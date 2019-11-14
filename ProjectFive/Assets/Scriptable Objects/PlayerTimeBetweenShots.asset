@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42278744ee9ce4148b70134798f612b5, type: 3}
-  m_Name: New Int Variable
+  m_Script: {fileID: 11500000, guid: 09d13a0717e838340ab3d3bd301b02a5, type: 3}
+  m_Name: PlayerTimeBetweenShots
   m_EditorClassIdentifier: 
-  value: 0
+  value: 0.12
