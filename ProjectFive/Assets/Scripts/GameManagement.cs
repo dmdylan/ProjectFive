@@ -38,6 +38,7 @@ public class GameManagement : MonoBehaviour
             case true:
                 break;
             case false:
+                SetHighScore();
                 GameOverSequence();
                 break;
         }
@@ -74,5 +75,13 @@ public class GameManagement : MonoBehaviour
     private void UpdateTeleportRechargeBar()
     {
         teleportEnergyBar.UpdateBar(Player.playerTeleportTimer, 10f);
+    }
+    
+    private void SetHighScore()
+    {
+        if (playerPoints.Value > PlayerPrefs.GetInt("Highscore"))
+        { 
+            PlayerPrefs.SetInt("Highscore", playerPoints.Value);
+        }
     }
 }
