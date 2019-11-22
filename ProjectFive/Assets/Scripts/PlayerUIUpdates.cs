@@ -5,7 +5,7 @@ using System;
 public class PlayerUIUpdates : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI pointsText = null;
-    [SerializeField] private TextMeshProUGUI gameTimeText;
+    [SerializeField] private TextMeshProUGUI gameTimeText = null;
     public IntReference playerPoints;
     public FloatReference gameTimer;
 
