@@ -822,7 +822,8 @@ public class SimpleHealthBarWindow : EditorWindow
 			InitializeWindow();
 		}
 
-		static void WaitForIntroThumbnail ()
+        [System.Obsolete]
+        static void WaitForIntroThumbnail ()
 		{
 			if( !introThumbnailPage.isDone || EditorApplication.isCompiling )
 				return;
