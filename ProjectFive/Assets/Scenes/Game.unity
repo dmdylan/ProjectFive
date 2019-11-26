@@ -2785,6 +2785,10 @@ MonoBehaviour:
     useConstant: 0
     constantValue: 0
     floatVariable: {fileID: 11400000, guid: 22860db65b259c64abc6520e185ced4c, type: 2}
+  enemySpawnRate:
+    useConstant: 0
+    constantValue: 0
+    floatVariable: {fileID: 11400000, guid: 07b6e874199e5fe4daa496ce23a026cd, type: 2}
   powerUpObject: {fileID: 8665286345741382699, guid: 4a4204cfcf77c694391c840ca01a75b1,
     type: 3}
 --- !u!4 &699041324

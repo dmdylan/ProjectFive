@@ -14,6 +14,7 @@ public class GameManagement : MonoBehaviour
     public FloatReference gameTimer;
     public FloatReference playerFireRate;
     public FloatReference powerUpTimer;
+    public FloatReference enemySpawnRate;
 
     [SerializeField] private static float powerUpSpawnTimer = 45f;
 
@@ -21,6 +22,7 @@ public class GameManagement : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        enemySpawnRate.Value = .6f;
         playerPoints.Value = 0;
         gameTimer.Value = 0;
         Player.playerCurrentHealth = 20;
@@ -37,6 +39,7 @@ public class GameManagement : MonoBehaviour
         UpdateTheGameTimer();
         PlayerPickedUpPowerUp();
         PowerUpSpawnCountDown();
+        IncreaseEnemySpawnRate();
     }
 
     private void ChangeGameState()
@@ -54,7 +57,7 @@ public class GameManagement : MonoBehaviour
 
     private void GameOverSequence()
     {
-        SceneManager.LoadScene("GameOver");
+        Initiate.Fade("GameOver", Color.black, 2f);
     }
 
     private void IsThePlayerIsDead()
@@ -103,7 +106,7 @@ public class GameManagement : MonoBehaviour
             {
                 playerPickedUpPowerUp = false;
                 playerFireRate.Value = .12f;
-                powerUpTimer.Value = 5f;
+                powerUpTimer.Value = 7f;
             }
         }
     }
@@ -124,5 +127,29 @@ public class GameManagement : MonoBehaviour
     private void SpawnPowerUp()
     { 
         Instantiate(powerUpObject, new Vector3(0,.25f,0), transform.rotation);
+    }
+    
+    private void IncreaseEnemySpawnRate()
+    {
+        if(gameTimer.Value >= 60 && gameTimer.Value <= 120)
+        {
+            enemySpawnRate.Value = .5f;
+        }
+        else if(gameTimer.Value >= 120 && gameTimer.Value <= 180)
+        {
+            enemySpawnRate.Value = .4f;
+        }
+        else if (gameTimer.Value >= 180 && gameTimer.Value <= 240)
+        {
+            enemySpawnRate.Value = .3f;
+        }
+        else if (gameTimer.Value >= 240 && gameTimer.Value <= 300)
+        {
+            enemySpawnRate.Value = .2f;
+        }
+        else if (gameTimer.Value >= 300)
+        {
+            enemySpawnRate.Value = .1f;
+        }
     }
 }

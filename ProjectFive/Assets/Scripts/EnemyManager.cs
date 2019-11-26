@@ -14,7 +14,7 @@ public class EnemyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("Spawn", enemySpawnTime.Value, enemySpawnTime.Value);
+        Invoke("Spawn", enemySpawnTime.Value);
     }
 
     private void Update()
@@ -41,6 +41,8 @@ public class EnemyManager : MonoBehaviour
                 Instantiate(enemy, pos.position, pos.rotation);
             }
         }
+
+        Invoke("Spawn", enemySpawnTime.Value);
     }
 
     private void RespondToDebugKeys()
