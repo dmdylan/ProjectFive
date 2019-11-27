@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         IsHealthZero();
-        ChangeColorBasedOnHealthValue();
+        //ChangeColorBasedOnHealthValue();
     }
 
     private void IsHealthZero()

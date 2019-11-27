@@ -16,6 +16,8 @@ public class GameManagement : MonoBehaviour
     public FloatReference powerUpTimer;
     public FloatReference enemySpawnRate;
 
+    public static bool gameIsNotPaused;
+
     [SerializeField] private static float powerUpSpawnTimer = 45f;
 
     [SerializeField] GameObject powerUpObject = null;
@@ -152,4 +154,5 @@ public class GameManagement : MonoBehaviour
             enemySpawnRate.Value = .1f;
         }
     }
+
 }
