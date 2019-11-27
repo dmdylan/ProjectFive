@@ -13,14 +13,17 @@ public class Player : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     float camRayLength;
     Rigidbody playerRigidBody;
+    Animator animator;
     private Vector3 moveVelocity;
     private Camera mainCamera;
     public ShootController shoot;
     private bool timeShiftActive;
     public static float playerTeleportTimer = 10f;
+    private bool playerMoves;
 
     void Awake()
-    { 
+    {
+        animator = GetComponent<Animator>();
         playerRigidBody = GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
     }
@@ -32,6 +35,7 @@ public class Player : MonoBehaviour
         PlayerTimeControlAbility();
         ManagePlayerTimeSlowEnergy();
         CanPlayerTeleport();
+        PlayPlayerDeathAnimation();
     }
 
     void FixedUpdate()
@@ -42,9 +46,18 @@ public class Player : MonoBehaviour
 
     private void Movement()
     {
-        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-        moveVelocity = moveDirection * speed;
-        playerRigidBody.velocity = moveVelocity;
+         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+         moveVelocity = moveDirection * speed;
+         playerRigidBody.velocity = moveVelocity;
+
+        if (moveVelocity != Vector3.zero)
+        {
+            animator.SetBool("IsMoving", true);
+        }
+        else
+        {
+            animator.SetBool("IsMoving", false);
+        }
     }
 
     private void RotatePlayer()
@@ -55,7 +68,6 @@ public class Player : MonoBehaviour
         if (groundPlane.Raycast(cameraRay, out camRayLength))
         {
             Vector3 pointToLook = cameraRay.GetPoint(camRayLength);
-            Debug.DrawLine(cameraRay.origin, pointToLook, Color.black);
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
     }
@@ -149,6 +161,18 @@ public class Player : MonoBehaviour
             {
                 playerCurrentSlowTimeEnergy = playerMaxSlowTimeEnergy;
             }
+        }
+    }
+
+    private void PlayPlayerDeathAnimation()
+    {
+        if(playerCurrentHealth <= 0)
+        {
+            animator.SetBool("PlayerIsDead", true);
+        }
+        else
+        {
+            animator.SetBool("PlayerIsDead", false);
         }
     }
 }

@@ -10,8 +10,9 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
         LookTowardThePlayer();
+        Movement();
+        
     }
 
     private void Movement()
@@ -22,6 +23,6 @@ public class EnemyMovement : MonoBehaviour
 
     private void LookTowardThePlayer()
     {
-        transform.LookAt(new Vector3(player.position.x, player.position.y, player.position.z));
+        transform.LookAt(GameObject.FindWithTag("Player").transform.position);
     }
 }

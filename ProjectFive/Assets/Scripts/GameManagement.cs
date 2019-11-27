@@ -15,7 +15,6 @@ public class GameManagement : MonoBehaviour
     public FloatReference playerFireRate;
     public FloatReference powerUpTimer;
     public FloatReference enemySpawnRate;
-
     public static bool gameIsNotPaused;
 
     [SerializeField] private static float powerUpSpawnTimer = 45f;
@@ -27,6 +26,7 @@ public class GameManagement : MonoBehaviour
         enemySpawnRate.Value = .6f;
         playerPoints.Value = 0;
         gameTimer.Value = 0;
+        playerFireRate.Value = .12f;
         Player.playerCurrentHealth = 20;
     }
 
@@ -59,7 +59,7 @@ public class GameManagement : MonoBehaviour
 
     private void GameOverSequence()
     {
-        Initiate.Fade("GameOver", Color.black, 2f);
+        Initiate.Fade("GameOver", Color.black, 3f);
     }
 
     private void IsThePlayerIsDead()
