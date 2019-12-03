@@ -23,6 +23,7 @@ public class GameManagement : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        powerUpSpawnTimer = 45f;
         enemySpawnRate.Value = .6f;
         playerPoints.Value = 0;
         gameTimer.Value = 0;
