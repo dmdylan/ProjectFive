@@ -14,8 +14,7 @@ public class VolumeControl : MonoBehaviour
         if (PlayerPrefs.GetFloat("MusicVolume").Equals(null))
             audioSource.volume = .5f;
         else
-            audioSource.volume = PlayerPrefs.GetFloat("MusicVolume");
-        
+            audioSource.volume = PlayerPrefs.GetFloat("MusicVolume");  
     }
    
     public void SetGameVolumeLevel()
