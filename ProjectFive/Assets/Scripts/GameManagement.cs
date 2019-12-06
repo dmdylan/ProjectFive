@@ -34,6 +34,7 @@ public class GameManagement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        PauseTheGame();
         IsThePlayerIsDead();
         ChangeGameState();
         UpdateHealthBar();
@@ -156,4 +157,12 @@ public class GameManagement : MonoBehaviour
         }
     }
 
+    public void PauseTheGame()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+
+            Time.timeScale = 0;
+        }    
+    }
 }
