@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     public ShootController shoot;
     private bool timeShiftActive;
     public static float playerTeleportTimer = 10f;
-    private bool playerMoves;
 
     void Awake()
     {
@@ -74,14 +73,18 @@ public class Player : MonoBehaviour
 
     private void PlayerFiresBullet()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (GameManagement.gameIsPaused == false)
         {
-            shoot.isFiring = true;
+            if (Input.GetButtonDown("Fire1"))
+            {
+                shoot.isFiring = true;
+            }
+            if (Input.GetButtonUp("Fire1"))
+            {
+                shoot.isFiring = false;
+            }
         }
-        if (Input.GetButtonUp("Fire1"))
-        {
-            shoot.isFiring = false;
-        }
+
     }
 
     void OnCollisionEnter(Collision collision)
@@ -128,7 +131,7 @@ public class Player : MonoBehaviour
 
     private void PlayerTimeControlAbility()
     {
-        if (timeShiftActive == false)
+        if (timeShiftActive == false && GameManagement.gameIsPaused == false)
         {
             if (Input.GetKeyDown(KeyCode.LeftShift) && playerCurrentSlowTimeEnergy > 0)
             {
@@ -148,7 +151,7 @@ public class Player : MonoBehaviour
         //todo fix this so it isn't tied to framerate 
         if (timeShiftActive == true)
         {
-            playerCurrentSlowTimeEnergy -= .01f;
+            playerCurrentSlowTimeEnergy -= Time.deltaTime * 1.2f;
             if (playerCurrentSlowTimeEnergy <= 0)
             {
                 timeShiftActive = false;
@@ -156,11 +159,11 @@ public class Player : MonoBehaviour
         }
         else
         {
-            playerCurrentSlowTimeEnergy += .01f;
-            if(playerCurrentSlowTimeEnergy >= playerMaxSlowTimeEnergy)
-            {
-                playerCurrentSlowTimeEnergy = playerMaxSlowTimeEnergy;
-            }
+                playerCurrentSlowTimeEnergy += Time.deltaTime * .5f;
+                if(playerCurrentSlowTimeEnergy >= playerMaxSlowTimeEnergy)
+                {
+                    playerCurrentSlowTimeEnergy = playerMaxSlowTimeEnergy;
+                }
         }
     }
 

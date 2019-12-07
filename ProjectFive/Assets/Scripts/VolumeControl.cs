@@ -9,13 +9,13 @@ public class VolumeControl : MonoBehaviour
     public AudioSource audioSource;
     public Slider slider;
 
-    private void Start()
-    {
-        if (PlayerPrefs.GetFloat("MusicVolume").Equals(null))
-            audioSource.volume = .5f;
-        else
-            audioSource.volume = PlayerPrefs.GetFloat("MusicVolume");  
-    }
+//    private void Start()
+//    {
+//        if (PlayerPrefs.GetFloat("MusicVolume").Equals(null))
+//            audioSource.volume = .5f;
+//        else
+//            audioSource.volume = PlayerPrefs.GetFloat("MusicVolume");  
+//    }
    
     public void SetGameVolumeLevel()
     {
@@ -29,7 +29,6 @@ public class VolumeControl : MonoBehaviour
 
     public void VolumeLevel()
     {
-        audioSource.volume = slider.value;
-        SetGameVolumeLevel();
+        audioSource.volume = PlayerPrefs.GetFloat("MusicVolume");
     }
 }
