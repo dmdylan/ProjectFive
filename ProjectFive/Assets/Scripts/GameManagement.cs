@@ -160,7 +160,6 @@ public class GameManagement : MonoBehaviour
 
     public void PauseTheGame()
     {
-        print(gameIsPaused);
         if (Input.GetKeyDown(KeyCode.Escape) && gameIsPaused == false)
         {
             gameIsPaused = true;
